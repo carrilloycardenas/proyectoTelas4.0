@@ -43,9 +43,7 @@ export class TablaComponent {
   }
 
   buscar(){
-    console.log(this.articulos)
     this.articulos = this.articulos.filter(a => a.codigo == this.busqueda);
-    console.log(this.articulos)
   }
 
   seleccionar(articulo: Articulo) {

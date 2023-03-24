@@ -36,20 +36,16 @@ export class ArticulosService {
 
   getIndex(articulo: Articulo): number {
     let index = 0;
-    this.articulos.forEach(articulo => {
-      if (articulo.codigo === articulo.codigo) {
-        index = this.articulos.indexOf(articulo);
+    this.articulos.forEach(ar => {
+      if (ar.codigo === articulo.codigo) {
+        index = this.articulos.indexOf(ar);
       }
     });
     return index;
   }
 
   modificar(articulo: Articulo,articuloMod: Articulo) {
-    console.log(this.articulos)
-    console.log(articulo)
-    console.log(articuloMod)
-    const index = this.articulos.indexOf(articulo)
-    console.log(index)
+    const index = this.getIndex(articulo);
     this.articulos[index] = { ...articuloMod };
   }
 
