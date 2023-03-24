@@ -6,20 +6,20 @@ import { Articulo } from '../interfaces/Articulo';
 })
 export class ArticulosService {
   articulos: Articulo[] = [
-    { codigo: 1, descripcion: "papa", precio: 10.55 },
-    { codigo: 2, descripcion: "manzana", precio: 10.55 },
-    { codigo: 3, descripcion: "melon", precio: 10.55 },
-    { codigo: 4, descripcion: "cebolla", precio: 10.55 },
-    { codigo: 5, descripcion: "fresa", precio: 10.55 }
+    { idProductos: 1, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 2, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 3, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 4, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 5, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" }
   ]
-  constructor() {}
+  constructor() { }
 
   returnData() {
     return this.articulos;
   }
 
   validacion(articulo: Articulo): boolean {
-    const busqueda = this.articulos.filter(a => a.codigo == articulo.codigo);
+    const busqueda = this.articulos.filter(a => a.idProductos == articulo.idProductos);
     if (busqueda.length != 0) {
       return true;
     }
@@ -30,21 +30,21 @@ export class ArticulosService {
     this.articulos.push(articulo);
   }
 
-  seleccionar(codigo : number) : Articulo {
-    return {...this.articulos.find(art => art.codigo == codigo)!};
+  seleccionar(idProductos: number): Articulo {
+    return { ...this.articulos.find(art => art.idProductos == idProductos)! };
   }
 
   getIndex(articulo: Articulo): number {
     let index = 0;
     this.articulos.forEach(ar => {
-      if (ar.codigo === articulo.codigo) {
+      if (ar.idProductos === articulo.idProductos) {
         index = this.articulos.indexOf(ar);
       }
     });
     return index;
   }
 
-  modificar(articulo: Articulo,articuloMod: Articulo) {
+  modificar(articulo: Articulo, articuloMod: Articulo) {
     const index = this.getIndex(articulo);
     this.articulos[index] = { ...articuloMod };
   }

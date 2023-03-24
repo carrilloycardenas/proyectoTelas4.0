@@ -11,23 +11,26 @@ import Swal from 'sweetalert2';
 })
 export class FormularioComponent {
   title = 'practica02';
-  msgText : string = "";
-  msgAlert : boolean = false;
-  status : string = ""; 
+  msgText: string = "";
+  msgAlert: boolean = false;
+  status: string = "";
 
   @Input() articulosSeleccionado: Articulo = {
-    codigo: 0, 
+    idProductos: 0,
+    Nombre: "",
     descripcion: "",
-    precio: 0
+    stock: 0,
+    precioUnitario: 0,
+    Color: ""
   }
 
-  articuloModificar : Articulo = {
+  articuloModificar: Articulo = {
     ...this.articulosSeleccionado
   }
 
-  constructor(private articulosService : ArticulosService,
-              private activatedRouter : ActivatedRoute,
-              private router : Router) {
+  constructor(private articulosService: ArticulosService,
+    private activatedRouter: ActivatedRoute,
+    private router: Router) {
 
   }
   ngOnInit(): void {
@@ -35,26 +38,26 @@ export class FormularioComponent {
     //Add 'implements OnInit' to the class.
     this.activatedRouter.params.subscribe(params => {
       console.log(params);
-      const id : number = params ["id"];
-      this.status = id == undefined? "agregar" : "modificar";
-      this.articulosSeleccionado = id == undefined ? 
-                                                    this.articulosSeleccionado : 
-                                                    this.articulosService.seleccionar(id);
-                                                    this.articuloModificar = {
-                                                      ...this.articulosSeleccionado
-                                                    }
+      const id: number = params["id"];
+      this.status = id == undefined ? "agregar" : "modificar";
+      this.articulosSeleccionado = id == undefined ?
+        this.articulosSeleccionado :
+        this.articulosService.seleccionar(id);
+      this.articuloModificar = {
+        ...this.articulosSeleccionado
+      }
     });
   }
 
   agregar() {
-    if (this.articulosSeleccionado.codigo == 0 || this.articulosSeleccionado.descripcion == '') {
+    if (this.articulosSeleccionado.idProductos == 0 || this.articulosSeleccionado.Nombre == '') {
       //alert("Es necesario llenar todas los cuadros de texto");
       this.msgText = "Existen campos vacios";
       this.msgAlert = true;
       return;
     }
     if (this.articulosService.validacion(this.articulosSeleccionado)) {
-      this.msgText = "El codigo que intenta registrar ya existe";
+      this.msgText = "El idProductos que intenta registrar ya existe";
       this.msgAlert = true;
       return;
     }
@@ -63,12 +66,15 @@ export class FormularioComponent {
     });
 
     this.articulosSeleccionado = {
-      codigo: 0,
-      descripcion: '',
-      precio: 0
+      idProductos: 0,
+      Nombre: "",
+      descripcion: "",
+      stock: 0,
+      precioUnitario: 0,
+      Color: ""
     }
   }
-  regresar(){
+  regresar() {
     this.router.navigate(['/articulos']);
   }
   modificar() {
@@ -85,7 +91,7 @@ export class FormularioComponent {
       if (result.isConfirmed) {
         console.log(this.articulosSeleccionado)
         console.log(this.articuloModificar)
-        this.articulosService.modificar(this.articulosSeleccionado,this.articuloModificar);
+        this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar);
         this.router.navigate(['/articulos']); //para redireccionar 
 
       }

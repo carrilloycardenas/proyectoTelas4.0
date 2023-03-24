@@ -1,7 +1,7 @@
 <h1> Agregar Articulos</h1>
 <div class="mb-3">
-    <label class="form-label">Código</label>
-    <input type="number" class="form-control" [(ngModel)]="articuloModificar.codigo">
+    <label class="form-label">idProductos</label>
+    <input type="number" class="form-control" [(ngModel)]="articuloModificar.idProductos">
 </div>
 <div class="mb-3">
     <label class="form-label">Descripción</label>
@@ -12,6 +12,8 @@
     <input type="number" class="form-control" [(ngModel)]="articuloModificar.precio">
 </div>
 
-<button type="button" (click)="agregar()" class="btn btn-primary" style="margin-right: 10px;" *ngIf="status == 'agregar'">Agregar</button>
-<button type="button" (click)="modificar()" class="btn btn-primary" style="margin-right: 10px;"  *ngIf="status == 'modificar'">Modificar</button>
+<button type="button" (click)="agregar()" class="btn btn-primary" style="margin-right: 10px;"
+    *ngIf="status == 'agregar'">Agregar</button>
+<button type="button" (click)="modificar()" class="btn btn-primary" style="margin-right: 10px;"
+    *ngIf="status == 'modificar'">Modificar</button>
 <button type="button" (click)="regresar()" class="btn btn-success">Regresar</button>

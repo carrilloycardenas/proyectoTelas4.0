@@ -11,12 +11,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 export class AppComponent {
-@ViewChild("SideBar") sideBar : SidebarComponent | undefined;
+  @ViewChild("SideBar") sideBar: SidebarComponent | undefined;
 
   articulosSeleccionado: Articulo = {
-    codigo: 0,
+    idProductos: 0,
+    Nombre: "",
     descripcion: "",
-    precio: 0
+    stock: 0,
+    precioUnitario: 0,
+    Color: ""
   }
 
   seleccion(articulo: Articulo) {
@@ -24,7 +27,7 @@ export class AppComponent {
     this.articulosSeleccionado = articulo;
   }
 
-  mostrarSideBar () {
+  mostrarSideBar() {
     this.sideBar?.mostrarSideBar();
   }
 }

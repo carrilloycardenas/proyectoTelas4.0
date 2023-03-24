@@ -16,12 +16,15 @@ export class TablaComponent {
   articulos: Articulo[] = [];
 
   articulosSeleccionado: Articulo = {
-    codigo: 0,
+    idProductos: 0,
+    Nombre: '',
     descripcion: '',
-    precio: 0
+    stock: 0,
+    precioUnitario: 0,
+    Color: ''
   }
 
-  busqueda:number = 0
+  busqueda: number = 0
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -30,20 +33,20 @@ export class TablaComponent {
   }
 
   constructor(private articulosService: ArticulosService,
-              private router: Router) {
+    private router: Router) {
 
   }
 
   borrar(articulo: Articulo) {
-    const confirmacion = confirm(`¿Estas seguro de borrar el articulo? ${articulo.descripcion}`)
+    const confirmacion = confirm(`¿Estas seguro de borrar el articulo? ${articulo.Nombre}`)
     if (confirmacion) {
-      this.articulos = this.articulos.filter(a => a.codigo != articulo.codigo);
+      this.articulos = this.articulos.filter(a => a.idProductos != articulo.idProductos);
       this.articulosService.eliminar(articulo);
     }
   }
 
-  buscar(){
-    this.articulos = this.articulos.filter(a => a.codigo == this.busqueda);
+  buscar() {
+    this.articulos = this.articulos.filter(a => a.idProductos == this.busqueda);
   }
 
   seleccionar(articulo: Articulo) {
@@ -51,7 +54,7 @@ export class TablaComponent {
       ...articulo
       //Imprime todos los atributos de Articulo
     }
-    this.router.navigate(["modificararticulo/" + articulo.codigo])
+    this.router.navigate(["modificararticulo/" + articulo.idProductos])
 
     //this.seleccionArticulo.emit(this.seleccionArticulo);
   }
