@@ -21,6 +21,8 @@ export class TablaComponent {
     precio: 0
   }
 
+  busqueda:number = 0
+
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -38,6 +40,12 @@ export class TablaComponent {
       this.articulos = this.articulos.filter(a => a.codigo != articulo.codigo);
       this.articulosService.eliminar(articulo);
     }
+  }
+
+  buscar(){
+    console.log(this.articulos)
+    this.articulos = this.articulos.filter(a => a.codigo == this.busqueda);
+    console.log(this.articulos)
   }
 
   seleccionar(articulo: Articulo) {
