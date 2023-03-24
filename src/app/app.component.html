@@ -1,0 +1,14 @@
+<app-navbar [sideBar]="sideBar"></app-navbar>
+
+
+
+<div class="container">
+  <app-sidebar #SideBar> </app-sidebar>
+  <!-- <a routerLink="/articulos">Articulos</a> -  -->
+  <!-- <a routerLink="/agregararticulo"> Agregar articulos</a> -->
+  <!-- <button class="btn btn-primary" type="button" (click)="mostrarSideBar()">Mostrar sidebar</button> -->
+  <!--<app-tabla (seleccionArticulo)="seleccion($event)"></app-tabla>
+  <app-formulario [articulosSeleccionado]="articulosSeleccionado"></app-formulario>-->
+  <router-outlet></router-outlet>
+
+</div>

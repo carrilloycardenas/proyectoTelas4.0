@@ -1,0 +1,23 @@
+<h1>Administración de Articulos</h1>
+<table class="table table-striped table-hover table-light">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Borrar</th>
+            <th>Seleccionar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let articulo of articulos">
+            <td>{{ articulo.codigo}}</td>
+            <td>{{ articulo.descripcion}}</td>
+            <td>{{ articulo.precio | currency }}</td>
+            <td><button class="btn btn-danger" type="button" (click)="borrar(articulo)">Borrar</button></td>
+            <td><button class="btn btn-secondary" type="button" (click)="seleccionar(articulo)">Seleccionar</button>
+            </td>
+        </tr>
+    </tbody>
+    
+</table>
