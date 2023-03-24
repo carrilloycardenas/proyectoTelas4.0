@@ -15,7 +15,7 @@
         <tr *ngFor="let articulo of articulos">
             <td>{{ articulo.idProductos}}</td>
             <td>{{ articulo.descripcion}}</td>
-            <td>{{ articulo.precio | currency }}</td>
+            <td>{{ articulo.precioUnitario | currency }}</td>
             <td><button class="btn btn-danger" type="button" (click)="borrar(articulo)">Borrar</button></td>
             <td><button class="btn btn-secondary" type="button" (click)="seleccionar(articulo)">Seleccionar</button>
             </td>
