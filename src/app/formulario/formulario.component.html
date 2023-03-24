@@ -4,12 +4,24 @@
     <input type="number" class="form-control" [(ngModel)]="articuloModificar.idProductos">
 </div>
 <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input type="text" class="form-control" [(ngModel)]="articuloModificar.Nombre">
+</div>
+<div class="mb-3">
     <label class="form-label">Descripción</label>
     <input type="text" class="form-control" [(ngModel)]="articuloModificar.descripcion">
 </div>
 <div class="mb-3">
+    <label class="form-label">Stock</label>
+    <input type="number" class="form-control" [(ngModel)]="articuloModificar.stock">
+</div>
+<div class="mb-3">
     <label class="form-label">Precio</label>
     <input type="number" class="form-control" [(ngModel)]="articuloModificar.precioUnitario">
+</div>
+<div class="mb-3">
+    <label class="form-label">Color</label>
+    <input type="number" class="form-control" [(ngModel)]="articuloModificar.Color">
 </div>
 
 <button type="button" (click)="agregar()" class="btn btn-primary" style="margin-right: 10px;"

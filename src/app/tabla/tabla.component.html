@@ -14,8 +14,10 @@
     <tbody>
         <tr *ngFor="let articulo of articulos">
             <td>{{ articulo.idProductos}}</td>
-            <td>{{ articulo.descripcion}}</td>
+            <td>{{ articulo.Nombre}}</td>
+            <td>{{ articulo.stock}}</td>
             <td>{{ articulo.precioUnitario | currency }}</td>
+            <td>{{ articulo.Color}}</td>
             <td><button class="btn btn-danger" type="button" (click)="borrar(articulo)">Borrar</button></td>
             <td><button class="btn btn-secondary" type="button" (click)="seleccionar(articulo)">Seleccionar</button>
             </td>
