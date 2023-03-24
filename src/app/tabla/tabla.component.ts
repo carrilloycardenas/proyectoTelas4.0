@@ -27,7 +27,7 @@ export class TablaComponent {
     this.articulos = this.articulosService.returnData();
   }
 
-  constructor(private articulosService: ArticulosService, 
+  constructor(private articulosService: ArticulosService,
               private router: Router) {
 
   }
@@ -35,7 +35,8 @@ export class TablaComponent {
   borrar(articulo: Articulo) {
     const confirmacion = confirm(`¿Estas seguro de borrar el articulo? ${articulo.descripcion}`)
     if (confirmacion) {
-      //this.articulos = this.articulos.filter(a => a.codigo != articulo.codigo);
+      this.articulos = this.articulos.filter(a => a.codigo != articulo.codigo);
+      this.articulosService.eliminar(articulo);
     }
   }
 
@@ -46,6 +47,6 @@ export class TablaComponent {
     }
     this.router.navigate(["modificararticulo/" + articulo.codigo])
 
-   // this.seleccionArticulo.emit(this.seleccionArticulo);
+    //this.seleccionArticulo.emit(this.seleccionArticulo);
   }
 }

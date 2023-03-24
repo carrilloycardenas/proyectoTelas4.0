@@ -12,9 +12,7 @@ export class ArticulosService {
     { codigo: 4, descripcion: "cebolla", precio: 10.55 },
     { codigo: 5, descripcion: "fresa", precio: 10.55 }
   ]
-  constructor() {
-
-  }
+  constructor() {}
 
   returnData() {
     return this.articulos;
@@ -31,7 +29,7 @@ export class ArticulosService {
   agregar(articulo: Articulo) {
     this.articulos.push(articulo);
   }
- 
+
   seleccionar(codigo : number) : Articulo {
     return {...this.articulos.find(art => art.codigo == codigo)!};
   }
@@ -52,6 +50,7 @@ export class ArticulosService {
   }
 
   eliminar(articulo: Articulo) {
+    console.log(articulo);
     const index = this.getIndex(articulo);
     this.articulos.splice(index, 1);
   }
