@@ -21,6 +21,10 @@ export class FormularioComponent {
     precio: 0
   }
 
+  articuloModificar : Articulo = {
+    ...this.articulosSeleccionado
+  }
+
   constructor(private articulosService : ArticulosService,
               private activatedRouter : ActivatedRoute,
               private router : Router) {
@@ -36,6 +40,9 @@ export class FormularioComponent {
       this.articulosSeleccionado = id == undefined ? 
                                                     this.articulosSeleccionado : 
                                                     this.articulosService.seleccionar(id);
+                                                    this.articuloModificar = {
+                                                      ...this.articulosSeleccionado
+                                                    }
     });
   }
 
@@ -76,7 +83,9 @@ export class FormularioComponent {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.articulosService.modificar(this.articulosSeleccionado);
+        console.log(this.articulosSeleccionado)
+        console.log(this.articuloModificar)
+        this.articulosService.modificar(this.articulosSeleccionado,this.articuloModificar);
         this.router.navigate(['/articulos']); //para redireccionar 
 
       }

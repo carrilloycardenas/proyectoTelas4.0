@@ -44,9 +44,13 @@ export class ArticulosService {
     return index;
   }
 
-  modificar(articulo: Articulo) {
-    const index = this.getIndex(articulo);
-    this.articulos[index] = { ...articulo };
+  modificar(articulo: Articulo,articuloMod: Articulo) {
+    console.log(this.articulos)
+    console.log(articulo)
+    console.log(articuloMod)
+    const index = this.articulos.indexOf(articulo)
+    console.log(index)
+    this.articulos[index] = { ...articuloMod };
   }
 
   eliminar(articulo: Articulo) {
