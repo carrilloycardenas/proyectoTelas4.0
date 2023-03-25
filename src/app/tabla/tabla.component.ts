@@ -14,6 +14,7 @@ export class TablaComponent {
   @Output() seleccionArticulo = new EventEmitter();
 
   articulos: Articulo[] = [];
+  artiAux: Articulo[] = [];
 
   articulosSeleccionado: Articulo = {
     idProductos: 0,
@@ -24,12 +25,13 @@ export class TablaComponent {
     Color: ''
   }
 
-  busqueda: number = 0
+  busqueda:any;
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.articulos = this.articulosService.returnData();
+    this.artiAux = this.articulosService.returnData();
   }
 
   constructor(private articulosService: ArticulosService,
@@ -45,8 +47,13 @@ export class TablaComponent {
     }
   }
 
-  buscar() {
-    this.articulos = this.articulos.filter(a => a.idProductos == this.busqueda);
+  buscar(){
+    if(this.busqueda){
+      this.articulos = this.artiAux.filter(a => a.codigo == this.busqueda || a.descripcion == this.busqueda);
+    }
+    else{
+      this.articulos = this.artiAux;
+    }
   }
 
   seleccionar(articulo: Articulo) {
