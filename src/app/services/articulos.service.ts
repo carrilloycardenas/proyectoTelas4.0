@@ -6,11 +6,11 @@ import { Articulo } from '../interfaces/Articulo';
 })
 export class ArticulosService {
   articulos: Articulo[] = [
-    { idProductos: 1, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 2, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 3, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 4, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 5, Nombre: "papa", descripcion: "redondo", stock: 10.55, precioUnitario: 20, Color: "rojo" }
+    { idProductos: 1, Nombre: "tela1", descripcion: "redondo", stock: 10, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 2, Nombre: "aguja1", descripcion: "redondo", stock: 15, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 3, Nombre: "piel1", descripcion: "redondo", stock: 55, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 4, Nombre: "vinipiel1", descripcion: "redondo", stock: 15, precioUnitario: 20, Color: "rojo" },
+    { idProductos: 5, Nombre: "tela2", descripcion: "redondo", stock: 5, precioUnitario: 20, Color: "rojo" }
   ]
   constructor() { }
 
