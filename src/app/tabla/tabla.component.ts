@@ -49,7 +49,7 @@ export class TablaComponent {
 
   buscar(){
     if(this.busqueda){
-      this.articulos = this.artiAux.filter(a => a.codigo == this.busqueda || a.descripcion == this.busqueda);
+      this.articulos = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
     }
     else{
       this.articulos = this.artiAux;
