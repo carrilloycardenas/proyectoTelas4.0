@@ -37,7 +37,6 @@ export class FormularioComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.activatedRouter.params.subscribe(params => {
-      console.log(params);
       const id: number = params["id"];
       this.status = id == undefined ? "agregar" : "modificar";
       this.articulosSeleccionado = id == undefined ?
@@ -89,11 +88,8 @@ export class FormularioComponent {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(this.articulosSeleccionado)
-        console.log(this.articuloModificar)
         this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar);
-        this.router.navigate(['/articulos']); //para redireccionar 
-
+        this.router.navigate(['/articulos']); //para redireccionar
       }
     })
 
