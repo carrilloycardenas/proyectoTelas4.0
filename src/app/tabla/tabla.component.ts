@@ -50,6 +50,10 @@ export class TablaComponent {
   buscar(){
     if(this.busqueda){
       this.articulos = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
+      if(this.articulos.length == 0){
+        alert('No se encontro el producto')
+        this.articulos = this.artiAux
+      }
     }
     else{
       this.articulos = this.artiAux;

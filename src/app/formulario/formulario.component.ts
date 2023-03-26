@@ -50,22 +50,22 @@ export class FormularioComponent {
   }
 
   agregar() {
-    if (this.articulosSeleccionado.idProductos == 0 || this.articulosSeleccionado.Nombre == '') {
+    if (this.articuloModificar.idProductos == 0 || this.articuloModificar.Nombre == '') {
       //alert("Es necesario llenar todas los cuadros de texto");
       this.msgText = "Existen campos vacios";
       this.msgAlert = true;
       return;
     }
-    if (this.articulosService.validacion(this.articulosSeleccionado)) {
+    if (this.articulosService.validacion(this.articuloModificar)) {
       this.msgText = "El idProductos que intenta registrar ya existe";
       this.msgAlert = true;
       return;
     }
     this.articulosService.agregar({
-      ...this.articulosSeleccionado
+      ...this.articuloModificar
     });
 
-    this.articulosSeleccionado = {
+    this.articuloModificar = {
       idProductos: 0,
       Nombre: "",
       descripcion: "",
