@@ -20,7 +20,7 @@ export class TablaComponent {
     idProductos: 0,
     Nombre: '',
     descripcion: '',
-    stock: 0,
+    Stock: 0,
     precioUnitario: 0,
     Color: ''
   }
@@ -30,8 +30,14 @@ export class TablaComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.articulos = this.articulosService.returnData();
-    this.artiAux = this.articulosService.returnData();
+    // this.articulos = this.articulosService.returnData();
+    // this.artiAux = this.articulosService.returnData();
+
+    this.articulosService.returnData().subscribe((data)=>{
+      console.log(data);
+      this.articulos = data;
+      this.artiAux =  data;
+    });
   }
 
   constructor(private articulosService: ArticulosService,

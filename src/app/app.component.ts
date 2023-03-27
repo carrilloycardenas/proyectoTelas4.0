@@ -17,7 +17,7 @@ export class AppComponent {
     idProductos: 0,
     Nombre: "",
     descripcion: "",
-    stock: 0,
+    Stock: 0,
     precioUnitario: 0,
     Color: ""
   }

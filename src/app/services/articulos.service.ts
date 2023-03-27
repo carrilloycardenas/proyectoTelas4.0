@@ -1,22 +1,26 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Articulo } from '../interfaces/Articulo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticulosService {
-  articulos: Articulo[] = [
-    { idProductos: 1, Nombre: "tela1", descripcion: "redondo", stock: 10, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 2, Nombre: "aguja1", descripcion: "redondo", stock: 15, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 3, Nombre: "piel1", descripcion: "redondo", stock: 55, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 4, Nombre: "vinipiel1", descripcion: "redondo", stock: 15, precioUnitario: 20, Color: "rojo" },
-    { idProductos: 5, Nombre: "tela2", descripcion: "redondo", stock: 5, precioUnitario: 20, Color: "rojo" }
-  ]
-  constructor() { }
+  articulos: Articulo[] = [  ]
 
-  returnData() {
-    return this.articulos;
+  baseURL: string = 'http://localhost:3001/api/getProductos';
+  constructor(private http: HttpClient) { }
+
+  // returnData() {
+  //   return this.articulos;
+  // }
+
+  returnData() : Observable<Articulo[]>{
+    return this.http.get<Articulo[]>(this.baseURL);
   }
+
+
 
   validacion(articulo: Articulo): boolean {
     const busqueda = this.articulos.filter(a => a.idProductos == articulo.idProductos);
