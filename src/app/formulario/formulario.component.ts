@@ -60,9 +60,7 @@ export class FormularioComponent {
       this.msgAlert = true;
       return;
     }
-    this.articulosService.agregar({
-      ...this.articuloModificar
-    });
+    this.articulosService.agregar(this.articuloModificar).subscribe(data => {console.log(data)})
 
     this.articuloModificar = {
       idProductos: 0,
