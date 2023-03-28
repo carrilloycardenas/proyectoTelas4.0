@@ -48,8 +48,8 @@ export class TablaComponent {
   borrar(articulo: Articulo) {
     const confirmacion = confirm(`¿Estas seguro de borrar el articulo? ${articulo.Nombre}`)
     if (confirmacion) {
-      this.articulos = this.articulos.filter(a => a.idProductos != articulo.idProductos);
-      this.articulosService.eliminar(articulo);
+      // this.articulos = this.articulos.filter(a => a.idProductos != articulo.idProductos);
+      this.articulosService.eliminar(articulo).subscribe(data => console.log(data));
     }
   }
 
