@@ -56,7 +56,7 @@ export class ArticulosService {
 
   eliminar(articulo: Articulo) {
     console.log(articulo);
-    const index = this.getIndex(articulo);
+    const index = articulo.idProductos
     // this.articulos.splice(index, 1);
     return this.http.delete<Articulo>(this.baseURL+`/${index}`)
   }
