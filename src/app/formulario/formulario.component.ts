@@ -63,7 +63,7 @@ export class FormularioComponent {
       this.msgAlert = true;
       return;
     }
-    this.articulosService.agregar(this.articuloModificar).subscribe(data => {console.log(data)})
+    this.articulosService.agregar(this.articuloModificar).subscribe(data => {console.log(data)});
 
     this.articuloModificar = {
       idProductos: 0,
@@ -89,7 +89,7 @@ export class FormularioComponent {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar);
+        this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar).subscribe(data => {console.log(data)});
         this.router.navigate(['/articulos']); //para redireccionar
       }
     })

@@ -53,14 +53,14 @@ export class ArticulosService {
   }
 
   modificar(articulo: Articulo, articuloMod: Articulo) {
-    const index = this.getIndex(articulo);
-    this.articulos[index] = { ...articuloMod };
+    const index = articulo.idProductos;
+    return this.http.put<Articulo>(this.baseURL+`/${index}`,articuloMod);
   }
 
   eliminar(articulo: Articulo) {
     console.log(articulo);
     const index = articulo.idProductos
     // this.articulos.splice(index, 1);
-    return this.http.delete<Articulo>(this.baseURL+`/${index}`)
+    return this.http.delete<Articulo>(this.baseURL+`/${index}`);
   }
 }
