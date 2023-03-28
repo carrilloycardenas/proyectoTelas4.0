@@ -39,12 +39,15 @@ export class FormularioComponent {
     this.activatedRouter.params.subscribe(params => {
       const id: number = params["id"];
       this.status = id == undefined ? "agregar" : "modificar";
+      console.log(id)
       this.articulosSeleccionado = id == undefined ?
-        this.articulosSeleccionado :
-        this.articulosService.seleccionar(id);
-      this.articuloModificar = {
-        ...this.articulosSeleccionado
-      }
+      this.articulosSeleccionado :
+        this.articulosSeleccionado = {
+          ...this.articulosService.seleccionar(id)
+        }
+        this.articuloModificar = {
+          ...this.articulosSeleccionado
+        }
     });
   }
 

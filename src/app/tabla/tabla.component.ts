@@ -34,7 +34,7 @@ export class TablaComponent {
     // this.artiAux = this.articulosService.returnData();
 
     this.articulosService.returnData().subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       this.articulos = data;
       this.artiAux =  data;
     });
