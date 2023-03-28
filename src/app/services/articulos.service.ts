@@ -31,7 +31,8 @@ export class ArticulosService {
   }
 
   agregar(articulo: Articulo) {
-    this.articulos.push(articulo);
+    // this.articulos.push(articulo);
+    return this.http.post<Articulo>(this.baseURL,articulo)
   }
 
   seleccionar(idProductos: number): Articulo {

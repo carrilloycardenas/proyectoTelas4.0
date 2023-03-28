@@ -1,27 +1,27 @@
 <h1> Agregar Articulos</h1>
 <div class="mb-3">
     <label class="form-label">idProductos</label>
-    <input type="number" class="form-control" [(ngModel)]="articuloModificar.idProductos">
+    <input type="number" class="form-control" [(ngModel)]="articuloModificar.idProductos" name="idProd">
 </div>
 <div class="mb-3">
     <label class="form-label">Nombre</label>
-    <input type="text" class="form-control" [(ngModel)]="articuloModificar.Nombre">
+    <input type="text" class="form-control" [(ngModel)]="articuloModificar.Nombre" name="nombreProd">
 </div>
 <div class="mb-3">
     <label class="form-label">Descripción</label>
-    <input type="text" class="form-control" [(ngModel)]="articuloModificar.descripcion">
+    <input type="text" class="form-control" [(ngModel)]="articuloModificar.descripcion" name="descProd">
 </div>
 <div class="mb-3">
     <label class="form-label">Stock</label>
-    <input type="number" class="form-control" [(ngModel)]="articuloModificar.Stock">
+    <input type="number" class="form-control" [(ngModel)]="articuloModificar.Stock" name="stockProd">
 </div>
 <div class="mb-3">
     <label class="form-label">Precio</label>
-    <input type="number" class="form-control" [(ngModel)]="articuloModificar.precioUnitario">
+    <input type="number" class="form-control" [(ngModel)]="articuloModificar.precioUnitario" name="precioProd">
 </div>
 <div class="mb-3">
     <label class="form-label">Color</label>
-    <input type="text" class="form-control" [(ngModel)]="articuloModificar.Color">
+    <input type="text" class="form-control" [(ngModel)]="articuloModificar.Color" name="colProd">
 </div>
 
 <button type="button" (click)="agregar()" class="btn btn-primary" style="margin-right: 10px;"
