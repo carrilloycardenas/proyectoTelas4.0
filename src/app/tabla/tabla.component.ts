@@ -34,7 +34,7 @@ export class TablaComponent {
     // this.artiAux = this.articulosService.returnData();
 
     this.articulosService.returnData().subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       this.articulos = data;
       this.artiAux =  data;
     });
@@ -48,8 +48,9 @@ export class TablaComponent {
   borrar(articulo: Articulo) {
     const confirmacion = confirm(`¿Estas seguro de borrar el articulo? ${articulo.Nombre}`)
     if (confirmacion) {
-      this.articulos = this.articulos.filter(a => a.idProductos != articulo.idProductos);
-      this.articulosService.eliminar(articulo);
+      // this.articulos = this.articulos.filter(a => a.idProductos != articulo.idProductos);
+      this.articulosService.eliminar(articulo).subscribe(data => console.log(data));
+      this.articulos.splice(this.articulos.indexOf(articulo),1)
     }
   }
 

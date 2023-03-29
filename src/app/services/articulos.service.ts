@@ -7,7 +7,8 @@ import { Articulo } from '../interfaces/Articulo';
   providedIn: 'root'
 })
 export class ArticulosService {
-  articulos: Articulo[] = [  ]
+
+  articulos: Articulo[] = []
 
   baseURL: string = 'http://localhost:3001/api/getProductos';
   constructor(private http: HttpClient) { }
@@ -19,8 +20,6 @@ export class ArticulosService {
   returnData() : Observable<Articulo[]>{
     return this.http.get<Articulo[]>(this.baseURL);
   }
-
-
 
   validacion(articulo: Articulo): boolean {
     const busqueda = this.articulos.filter(a => a.idProductos == articulo.idProductos);
@@ -36,6 +35,10 @@ export class ArticulosService {
   }
 
   seleccionar(idProductos: number): Articulo {
+    this.returnData().subscribe(data => {
+      console.log(data)
+      this.articulos = data
+    })
     return { ...this.articulos.find(art => art.idProductos == idProductos)! };
   }
 
@@ -50,13 +53,14 @@ export class ArticulosService {
   }
 
   modificar(articulo: Articulo, articuloMod: Articulo) {
-    const index = this.getIndex(articulo);
-    this.articulos[index] = { ...articuloMod };
+    const index = articulo.idProductos;
+    return this.http.put<Articulo>(this.baseURL+`/${index}`,articuloMod);
   }
 
   eliminar(articulo: Articulo) {
     console.log(articulo);
-    const index = this.getIndex(articulo);
-    this.articulos.splice(index, 1);
+    const index = articulo.idProductos
+    // this.articulos.splice(index, 1);
+    return this.http.delete<Articulo>(this.baseURL+`/${index}`);
   }
 }

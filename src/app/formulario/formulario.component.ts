@@ -39,12 +39,15 @@ export class FormularioComponent {
     this.activatedRouter.params.subscribe(params => {
       const id: number = params["id"];
       this.status = id == undefined ? "agregar" : "modificar";
+      console.log(id)
       this.articulosSeleccionado = id == undefined ?
-        this.articulosSeleccionado :
-        this.articulosService.seleccionar(id);
-      this.articuloModificar = {
-        ...this.articulosSeleccionado
-      }
+      this.articulosSeleccionado :
+        this.articulosSeleccionado = {
+          ...this.articulosService.seleccionar(id)
+        }
+        this.articuloModificar = {
+          ...this.articulosSeleccionado
+        }
     });
   }
 
@@ -60,7 +63,7 @@ export class FormularioComponent {
       this.msgAlert = true;
       return;
     }
-    this.articulosService.agregar(this.articuloModificar).subscribe(data => {console.log(data)})
+    this.articulosService.agregar(this.articuloModificar).subscribe(data => {console.log(data)});
 
     this.articuloModificar = {
       idProductos: 0,
@@ -86,7 +89,7 @@ export class FormularioComponent {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar);
+        this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar).subscribe(data => {console.log(data)});
         this.router.navigate(['/articulos']); //para redireccionar
       }
     })
