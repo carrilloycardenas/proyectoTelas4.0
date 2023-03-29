@@ -13,8 +13,8 @@ export class DevolucionesComponent {
   [x: string]: any;
   @Output() seleccionArticulo = new EventEmitter();
 
-  articulos: Articulo[] = [];
-  artiAux: Articulo[] = [];
+  devolu: Articulo[] = [];
+  devoluAux: Articulo[] = [];
 
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
@@ -41,21 +41,14 @@ export class DevolucionesComponent {
     //Add 'implements OnInit' to the class.
     this.articulosService.returnData().subscribe((data) => {
       console.log(data);
-      this.articulos = data;
-      this.artiAux = data;
+      this.devolu = data;
+      this.devoluAux = data;
     });
   }
 
   agregar() {
     if (this.articuloModificar.idProductos == 0 || this.articuloModificar.Nombre == '') {
-      //alert("Es necesario llenar todas los cuadros de texto");
-
-      return;
-    }
-    if (this.articulosService.validacion(this.articuloModificar)) {
-      //this.msgText = "El idProductos que intenta registrar ya existe";
-      //this.msgAlert = true;
-      return;
+      console.log("Aqui devuelve");
     }
     this.articulosService.agregar({
       ...this.articuloModificar
@@ -72,14 +65,14 @@ export class DevolucionesComponent {
   }
   buscar() {
     if (this.busqueda) {
-      this.articulos = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
-      if (this.articulos.length == 0) {
+      this.devolu = this.devoluAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
+      if (this.devolu.length == 0) {
         alert('No se encontro el producto')
-        this.articulos = this.artiAux
+        this.devolu = this.devoluAux
       }
     }
     else {
-      this.articulos = this.artiAux;
+      this.devolu = this.devoluAux;
     }
   }
   regresar() {

@@ -63,4 +63,8 @@ export class ArticulosService {
     // this.articulos.splice(index, 1);
     return this.http.delete<Articulo>(this.baseURL+`/${index}`);
   }
+
+  getDev(){
+    
+  }
 }
