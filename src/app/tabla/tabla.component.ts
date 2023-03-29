@@ -25,18 +25,17 @@ export class TablaComponent {
     Color: ''
   }
 
-  busqueda:any;
+  busqueda: any;
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     // this.articulos = this.articulosService.returnData();
     // this.artiAux = this.articulosService.returnData();
-
-    this.articulosService.returnData().subscribe((data)=>{
+    this.articulosService.returnData().subscribe((data) => {
       console.log(data);
       this.articulos = data;
-      this.artiAux =  data;
+      this.artiAux = data;
     });
   }
 
@@ -53,15 +52,15 @@ export class TablaComponent {
     }
   }
 
-  buscar(){
-    if(this.busqueda){
+  buscar() {
+    if (this.busqueda) {
       this.articulos = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
-      if(this.articulos.length == 0){
+      if (this.articulos.length == 0) {
         alert('No se encontro el producto')
         this.articulos = this.artiAux
       }
     }
-    else{
+    else {
       this.articulos = this.artiAux;
     }
   }

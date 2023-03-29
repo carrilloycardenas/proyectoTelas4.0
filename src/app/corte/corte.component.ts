@@ -1,19 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Articulo } from '../interfaces/Articulo';
 import { ArticulosService } from '../services/articulos.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-formulario',
-  templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  selector: 'app-corte',
+  templateUrl: './corte.component.html',
+  styleUrls: ['./corte.component.css']
 })
-export class FormularioComponent {
-  title = 'practica02';
-  msgText: string = "";
-  msgAlert: boolean = false;
+export class CorteComponent {
   status: string = "";
+  [x: string]: any;
+  @Output() seleccionArticulo = new EventEmitter();
+
+  articulos: Articulo[] = [];
+  artiAux: Articulo[] = [];
 
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
@@ -23,6 +25,8 @@ export class FormularioComponent {
     precioUnitario: 0,
     Color: ""
   }
+
+  busqueda: any;
 
   articuloModificar: Articulo = {
     ...this.articulosSeleccionado
@@ -36,13 +40,19 @@ export class FormularioComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+    this.articulosService.returnData().subscribe((data) => {
+      console.log(data);
+      this.articulos = data;
+      this.artiAux = data;
+    });
+
     this.activatedRouter.params.subscribe(params => {
       const id: number = params["id"];
       this.status = id == undefined ? "agregar" : "modificar";
       this.articulosSeleccionado = id == undefined ?
         this.articulosSeleccionado :
         this.articulosService.seleccionar(id);
-        this.articuloModificar = {
+      this.articuloModificar = {
         ...this.articulosSeleccionado
       }
     });
@@ -51,13 +61,12 @@ export class FormularioComponent {
   agregar() {
     if (this.articuloModificar.idProductos == 0 || this.articuloModificar.Nombre == '') {
       //alert("Es necesario llenar todas los cuadros de texto");
-      this.msgText = "Existen campos vacios";
-      this.msgAlert = true;
+
       return;
     }
     if (this.articulosService.validacion(this.articuloModificar)) {
-      this.msgText = "El idProductos que intenta registrar ya existe";
-      this.msgAlert = true;
+      //this.msgText = "El idProductos que intenta registrar ya existe";
+      //this.msgAlert = true;
       return;
     }
     this.articulosService.agregar({
@@ -73,26 +82,20 @@ export class FormularioComponent {
       Color: ""
     }
   }
-  regresar() {
-    this.router.navigate(['/articulos']);
-  }
-  modificar() {
-    Swal.fire({
-      title: '¿Estas seguro de modificar el producto?',
-      text: "No podras revertir esto",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Modificar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.articulosService.modificar(this.articulosSeleccionado, this.articuloModificar);
-        this.router.navigate(['/articulos']); //para redireccionar
+  buscar() {
+    if (this.busqueda) {
+      this.articulos = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
+      if (this.articulos.length == 0) {
+        alert('No se encontro el producto')
+        this.articulos = this.artiAux
       }
-    })
-
+    }
+    else {
+      this.articulos = this.artiAux;
+    }
+  }
+  regresar() {
+    this.router.navigate(['/corte']);
   }
 
 }

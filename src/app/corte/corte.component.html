@@ -1,0 +1,36 @@
+<h1>Caja</h1>
+<div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+        <div>
+            <input type="text" class="" style="width:250px" placeholder="Ingresar ID del producto"
+                [(ngModel)]='busqueda'>
+            <button class="btn btn-primary" style="margin-left: 10px;" (click)="buscar()">Buscar</button>
+        </div>
+        <input type="number" class="form-control" [(ngModel)]="articuloModificar.Stock">
+        <button style="max-width: 30%; margin-left: 15px;position: relative;" type="button" (click)="agregar()"
+            class="btn btn-primary" *ngIf="status== 'agregar'">Agregar</button>
+    </div>
+    <table class="table table-striped table-hover table-light">
+        <thead>
+            <tr>
+                <th>idProductos</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let articulo of articulos">
+                <td>{{ articulo.idProductos}}</td>
+                <td>{{ articulo.Nombre}}</td>
+                <td>{{ articulo.Stock}}</td>
+                <td>{{ articulo.precioUnitario | currency }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <button type="button" (click)="regresar()" class="btn btn-success">Regresar</button>
+    <button style="position: absolute;" type="button" class="btn btn-success">Registrar</button>
+</div>
