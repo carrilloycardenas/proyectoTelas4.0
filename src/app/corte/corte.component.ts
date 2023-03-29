@@ -17,6 +17,8 @@ export class CorteComponent {
   articulos: Articulo[] = [];
   artiAux: Articulo[] = [];
 
+  carrito: Articulo[] = [];
+
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
     Nombre: "",
@@ -27,6 +29,7 @@ export class CorteComponent {
   }
 
   busqueda: any;
+  cantidad: number = 0;
 
   articuloModificar: Articulo = {
     ...this.articulosSeleccionado
@@ -59,27 +62,10 @@ export class CorteComponent {
   }
 
   agregar() {
-    if (this.articuloModificar.idProductos == 0 || this.articuloModificar.Nombre == '') {
-      //alert("Es necesario llenar todas los cuadros de texto");
-
-      return;
-    }
-    if (this.articulosService.validacion(this.articuloModificar)) {
-      //this.msgText = "El idProductos que intenta registrar ya existe";
-      //this.msgAlert = true;
-      return;
-    }
-    this.articulosService.agregar({
-      ...this.articuloModificar
-    });
-
-    this.articuloModificar = {
-      idProductos: 0,
-      Nombre: "",
-      descripcion: "",
-      Stock: 0,
-      precioUnitario: 0,
-      Color: ""
+    const aux = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
+    if(this.cantidad != 0){
+      aux[0].Stock = this.cantidad;
+      this.carrito.push(...aux);
     }
   }
   buscar() {
@@ -95,7 +81,7 @@ export class CorteComponent {
     }
   }
   regresar() {
-    this.router.navigate(['/corte']);
+    this.router.navigate(['/']);
   }
 
 }
