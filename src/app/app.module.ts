@@ -9,6 +9,8 @@ import { TablaComponent } from './tabla/tabla.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CorteComponent } from './corte/corte.component';
+import { DevolucionesComponent } from './devoluciones/devoluciones.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormularioComponent,
     TablaComponent,
     SidebarComponent,
-    NavbarComponent
+    NavbarComponent,
+    CorteComponent,
+    DevolucionesComponent
   ],
   imports: [
     BrowserModule,
