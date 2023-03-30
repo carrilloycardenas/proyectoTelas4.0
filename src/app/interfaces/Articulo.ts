@@ -6,3 +6,10 @@ export interface Articulo {
     precioUnitario: number;
     Color: string;
 }
+
+export interface Ventas{
+  Fecha: string;
+  idProducto: number;
+  Cantidad: number;
+  precio: number;
+}

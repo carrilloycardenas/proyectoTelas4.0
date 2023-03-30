@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Articulo } from '../interfaces/Articulo';
+import { Articulo, Ventas } from '../interfaces/Articulo';
 import { ArticulosService } from '../services/articulos.service';
 import Swal from 'sweetalert2';
 
@@ -17,7 +17,7 @@ export class CorteComponent {
   articulos: Articulo[] = [];
   artiAux: Articulo[] = [];
 
-  carrito: Articulo[] = [];
+  carrito: Ventas[] = [];
 
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
@@ -68,6 +68,13 @@ export class CorteComponent {
       this.carrito.push(...aux);
     }
   }
+
+  registrarVenta(){
+    if(this.carrito != null){
+      //this.articulosService.agregarVenta(this.carrito).subscribe(data => {console.log(data)});
+    }
+  }
+
   buscar() {
     if (this.busqueda) {
       this.articulos = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);

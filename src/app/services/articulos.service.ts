@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Articulo } from '../interfaces/Articulo';
+import { Articulo, Ventas } from '../interfaces/Articulo';
 
 @Injectable({
   providedIn: 'root'
@@ -64,7 +64,11 @@ export class ArticulosService {
     return this.http.delete<Articulo>(this.baseURL+`/${index}`);
   }
 
+  agregarVenta(venta: Ventas){
+    return this.http.post<Ventas>(this.baseURL+'/venta',venta);
+  }
+
   getDev(){
-    
+
   }
 }
