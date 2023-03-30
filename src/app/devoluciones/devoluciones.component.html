@@ -15,10 +15,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let articulo of devolu">
-            <td>{{ articulo.idProductos}}</td>
+            <td>{{ articulo.idProducto}}</td>
             <td>{{ articulo.Nombre}}</td>
-            <td>{{ articulo.Stock}}</td>
-            <td>{{ articulo.precioUnitario | currency }}</td>
+            <td>{{ articulo.Cantidad}}</td>
+            <td>{{ articulo.precio | currency }}</td>
         </tr>
     </tbody>
 
