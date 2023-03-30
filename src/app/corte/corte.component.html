@@ -45,10 +45,10 @@
       </thead>
       <tbody>
           <tr *ngFor="let articulo of carrito">
-              <td>{{ articulo.idProductos}}</td>
-              <td>{{ articulo.Nombre}}</td>
-              <td>{{ articulo.Stock}}</td>
-              <td>{{ articulo.precioUnitario | currency }}</td>
+              <td>{{ articulo.idProducto }}</td>
+              <td>{{ articulo.Nombre }}</td>
+              <td>{{ articulo.Cantidad }}</td>
+              <td>{{ articulo.precio | currency }}</td>
               <td><button class="btn btn-danger" type="button">Borrar</button></td>
           </tr>
       </tbody>

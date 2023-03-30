@@ -10,6 +10,7 @@ export interface Articulo {
 export interface Ventas{
   Fecha: string;
   idProducto: number;
+  Nombre: string;
   Cantidad: number;
   precio: number;
 }

@@ -62,10 +62,20 @@ export class CorteComponent {
   }
 
   agregar() {
-    const aux = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
+    const aux : Ventas = {
+      Fecha: '01/01/01',
+      Nombre: 'hola',
+      idProducto: 0,
+      Cantidad: 0,
+      precio: 0
+    } 
+    aux.idProducto = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].idProductos
+    aux.Cantidad = this.cantidad
+    aux.precio = (this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].precioUnitario * this.cantidad)
+    aux.Nombre = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].Nombre
     if(this.cantidad != 0){
-      aux[0].Stock = this.cantidad;
-      this.carrito.push(...aux);
+      // aux[0].Stock = this.cantidad;
+      this.carrito.push(aux);
     }
   }
 
