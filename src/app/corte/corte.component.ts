@@ -80,9 +80,10 @@ export class CorteComponent {
   }
 
   registrarVenta(){
-    if(this.carrito != null){
-      //this.articulosService.agregarVenta(this.carrito).subscribe(data => {console.log(data)});
+    if(this.carrito.length > 0){
+      this.articulosService.agregarVenta(this.carrito)
     }
+    this.carrito = []
   }
 
   buscar() {

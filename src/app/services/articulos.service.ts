@@ -64,8 +64,10 @@ export class ArticulosService {
     return this.http.delete<Articulo>(this.baseURL+`/${index}`);
   }
 
-  agregarVenta(venta: Ventas){
-    return this.http.post<Ventas>(this.baseURL+'/venta',venta);
+  agregarVenta(venta: Ventas[]){
+    venta.forEach(element => {
+      this.http.post<Ventas>(this.baseURL+'/venta',element).subscribe(data => console.log(data))
+    });
   }
 
   getDev(){
