@@ -42,7 +42,11 @@ export class DevolucionesComponent {
     this.articulosService.getDev().subscribe((data) => {
       console.log(data);
       this.devolu = data;
-      this.devoluAux = data;
+      console.log(this.devolu)
+      this.devolu.forEach(element => {
+        element.Nombre = ''
+      });
+      this.devoluAux = this.devolu;
     });
   }
 
