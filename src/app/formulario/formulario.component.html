@@ -1,4 +1,8 @@
 <h1> Agregar Articulos</h1>
+<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="msgAlert">
+  <strong>Error!!</strong>{{ msgText }}.
+  <button type="button" (click)="cerrarAlert()" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 <div class="mb-3">
     <label class="form-label">idProductos</label>
     <input type="number" class="form-control" [(ngModel)]="articuloModificar.idProductos" name="idProd">

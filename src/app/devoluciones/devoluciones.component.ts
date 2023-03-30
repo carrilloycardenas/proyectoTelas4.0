@@ -10,6 +10,8 @@ import { ArticulosService } from '../services/articulos.service';
 })
 export class DevolucionesComponent {
   status: string = "";
+  mmsgText: string = "";
+  msgAlert: boolean = false;
   [x: string]: any;
   @Output() seleccionArticulo = new EventEmitter();
 
@@ -50,9 +52,15 @@ export class DevolucionesComponent {
     });
   }
 
+  cerrarAlert(){
+    this.msgAlert = false;
+  }
+
   agregar() {
     if (this.articuloModificar.idProductos == 0 || this.articuloModificar.Nombre == '') {
-      console.log("Aqui devuelve");
+      this.mmsgText = "Existen campos vacios";
+      this.msgAlert = true;
+      return;
     }
     this.articulosService.agregar({
       ...this.articuloModificar
@@ -68,19 +76,23 @@ export class DevolucionesComponent {
     }
   }
   buscar() {
-    // if (this.busqueda) {
-    //   this.devolu = this.devoluAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda);
-    //   if (this.devolu.length == 0) {
-    //     alert('No se encontro el producto')
-    //     this.devolu = this.devoluAux
-    //   }
-    // }
-    // else {
-    //   this.devolu = this.devoluAux;
-    // }
+    if (this.busqueda) {
+      this.devolu = this.devoluAux.filter(a => a.idProducto == this.busqueda);
+      if (this.devolu.length == 0) {
+        alert('No se encontro el producto')
+        this.devolu = this.devoluAux
+      }
+    }
+    else {
+      this.devolu = this.devoluAux;
+    }
   }
   regresar() {
     this.router.navigate(['/devoluciones']);
+  }
+
+  devolver(){
+
   }
 
 }

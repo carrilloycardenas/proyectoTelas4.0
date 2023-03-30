@@ -11,6 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class CorteComponent {
   status: string = "";
+  msgText: string = "";
+  msgAlert: boolean = false;
   [x: string]: any;
   @Output() seleccionArticulo = new EventEmitter();
 
@@ -61,6 +63,10 @@ export class CorteComponent {
     });
   }
 
+  cerrarAlert(){
+    this.msgAlert = false;
+  }
+
   agregar() {
     const aux : Ventas = {
       Fecha: '01/01/01',
@@ -68,7 +74,7 @@ export class CorteComponent {
       idProducto: 0,
       Cantidad: 0,
       precio: 0
-    } 
+    }
     aux.idProducto = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].idProductos
     aux.Cantidad = this.cantidad
     aux.precio = (this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].precioUnitario * this.cantidad)

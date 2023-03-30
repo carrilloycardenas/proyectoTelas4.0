@@ -39,7 +39,6 @@ export class FormularioComponent {
     this.activatedRouter.params.subscribe(params => {
       const id: number = params["id"];
       this.status = id == undefined ? "agregar" : "modificar";
-      console.log(id)
       this.articulosSeleccionado = id == undefined ?
       this.articulosSeleccionado :
         this.articulosSeleccionado = {
@@ -51,9 +50,12 @@ export class FormularioComponent {
     });
   }
 
+  cerrarAlert(){
+    this.msgAlert = false;
+  }
+
   agregar() {
     if (this.articuloModificar.idProductos == 0 || this.articuloModificar.Nombre == '') {
-      //alert("Es necesario llenar todas los cuadros de texto");
       this.msgText = "Existen campos vacios";
       this.msgAlert = true;
       return;
@@ -74,9 +76,6 @@ export class FormularioComponent {
       Color: ""
     }
   }
-  regresar() {
-    this.router.navigate(['/articulos']);
-  }
   modificar() {
     Swal.fire({
       title: '¿Estas seguro de modificar el producto?',
@@ -95,5 +94,7 @@ export class FormularioComponent {
     })
 
   }
-
+  regresar() {
+    this.router.navigate(['/articulos']);
+  }
 }
