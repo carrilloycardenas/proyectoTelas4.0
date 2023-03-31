@@ -68,6 +68,7 @@ export class CorteComponent {
   }
 
   agregar() {
+    const fecha = new Date()
     const aux : Ventas = {
       Fecha: '01/01/01',
       Nombre: 'hola',
@@ -75,6 +76,7 @@ export class CorteComponent {
       Cantidad: 0,
       precio: 0
     }
+    aux.Fecha = `${fecha.getDay}/${fecha.getMonth}/${fecha.getFullYear}`
     aux.idProducto = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].idProductos
     aux.Cantidad = this.cantidad
     aux.precio = (this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].precioUnitario * this.cantidad)
