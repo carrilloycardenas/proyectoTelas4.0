@@ -76,14 +76,17 @@ export class CorteComponent {
       Cantidad: 0,
       precio: 0
     }
-    aux.Fecha = `${fecha.getDay}/${fecha.getMonth}/${fecha.getFullYear}`
+
+    aux.Fecha = `${fecha.getFullYear()}/${fecha.getMonth()}/${fecha.getDay()}`
     aux.idProducto = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].idProductos
     aux.Cantidad = this.cantidad
     aux.precio = (this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].precioUnitario * this.cantidad)
     aux.Nombre = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].Nombre
-    if(this.cantidad > 0){
+    if(this.cantidad > 0 && this.cantidad <= this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].Stock){
       // aux[0].Stock = this.cantidad;
       this.carrito.push(aux);
+    } else {
+      alert('No hay suficiente producto')
     }
   }
 
