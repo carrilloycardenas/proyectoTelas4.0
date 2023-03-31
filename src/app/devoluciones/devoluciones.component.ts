@@ -21,7 +21,7 @@ export class DevolucionesComponent {
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
     Nombre: "",
-    descripcion: "",
+    Descripcion: "",
     Stock: 0,
     precioUnitario: 0,
     Color: ""
@@ -69,7 +69,7 @@ export class DevolucionesComponent {
     this.articuloModificar = {
       idProductos: 0,
       Nombre: "",
-      descripcion: "",
+      Descripcion: "",
       Stock: 0,
       precioUnitario: 0,
       Color: ""
@@ -88,7 +88,7 @@ export class DevolucionesComponent {
     }
   }
   regresar() {
-    this.router.navigate(['/devoluciones']);
+    this.router.navigate(['/']);
   }
 
   devolver(){

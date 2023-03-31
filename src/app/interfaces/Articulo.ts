@@ -1,7 +1,7 @@
 export interface Articulo {
     idProductos: number;
     Nombre: string;
-    descripcion: string;
+    Descripcion: string;
     Stock: number;
     precioUnitario: number;
     Color: string;

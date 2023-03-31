@@ -73,4 +73,5 @@ export class ArticulosService {
   getDev(){
     return this.http.get<Ventas[]>(this.baseURL+'/dev');
   }
+
 }

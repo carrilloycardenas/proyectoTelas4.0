@@ -24,7 +24,7 @@ export class CorteComponent {
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
     Nombre: "",
-    descripcion: "",
+    Descripcion: "",
     Stock: 0,
     precioUnitario: 0,
     Color: ""
@@ -79,7 +79,7 @@ export class CorteComponent {
     aux.Cantidad = this.cantidad
     aux.precio = (this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].precioUnitario * this.cantidad)
     aux.Nombre = this.artiAux.filter(a => a.idProductos == this.busqueda || a.Nombre == this.busqueda)[0].Nombre
-    if(this.cantidad != 0){
+    if(this.cantidad > 0){
       // aux[0].Stock = this.cantidad;
       this.carrito.push(aux);
     }
@@ -108,4 +108,7 @@ export class CorteComponent {
     this.router.navigate(['/']);
   }
 
+  prodBorrar(){
+
+  }
 }

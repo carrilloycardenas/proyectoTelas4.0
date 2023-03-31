@@ -16,7 +16,7 @@ export class AppComponent {
   articulosSeleccionado: Articulo = {
     idProductos: 0,
     Nombre: "",
-    descripcion: "",
+    Descripcion: "",
     Stock: 0,
     precioUnitario: 0,
     Color: ""

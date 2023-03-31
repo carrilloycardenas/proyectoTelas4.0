@@ -18,7 +18,7 @@ export class FormularioComponent {
   @Input() articulosSeleccionado: Articulo = {
     idProductos: 0,
     Nombre: "",
-    descripcion: "",
+    Descripcion: "",
     Stock: 0,
     precioUnitario: 0,
     Color: ""
@@ -70,7 +70,7 @@ export class FormularioComponent {
     this.articuloModificar = {
       idProductos: 0,
       Nombre: "",
-      descripcion: "",
+      Descripcion: "",
       Stock: 0,
       precioUnitario: 0,
       Color: ""

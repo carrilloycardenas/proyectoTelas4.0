@@ -6,7 +6,7 @@
     <thead>
         <tr>
             <th>idProductos</th>
-            <th>Nombre</th>
+            <th>Fecha</th>
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Total</th>
@@ -20,7 +20,7 @@
             <td>{{ articulo.Cantidad }}</td>
             <td>{{ articulo.precio | currency }}</td>
             <td>{{ articulo.precio * articulo.Cantidad | currency }}</td>
-            <td><button class="btn btn-danger" type="button" (click)="devolver()">Borrar</button></td>
+            <td><button class="btn btn-danger" type="button" (click)="devolver()">Devolver</button></td>
         </tr>
     </tbody>
 

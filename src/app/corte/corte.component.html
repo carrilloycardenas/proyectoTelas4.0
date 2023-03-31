@@ -29,10 +29,9 @@
         </tbody>
 
     </table>
-    <div class="btns">
-      <button type="button" (click)="regresar()" class="btn btn-success">Regresar</button>
+      <button type="button" class="btn btn-success">Corte de caja</button>
+      <button type="button" (click)="regresar()" class="btn btn-success reg">Regresar</button>
       <button style="position: absolute;" type="button" class="btn btn-success reg" (click)="registrarVenta()">Registrar</button>
-    </div>
     <table class="table table-striped table-hover table-light">
       <thead>
           <tr>
@@ -49,7 +48,7 @@
               <td>{{ articulo.Nombre }}</td>
               <td>{{ articulo.Cantidad }}</td>
               <td>{{ articulo.precio | currency }}</td>
-              <td><button class="btn btn-danger" type="button">Borrar</button></td>
+              <td><button class="btn btn-danger" type="button" (click)="prodBorrar();">Borrar</button></td>
           </tr>
       </tbody>
 
